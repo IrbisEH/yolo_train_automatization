@@ -1,33 +1,5 @@
 import copy
-
-
-class YoloConfigs:
-    YOLO_DIR_PATH = '/home/irbis-eh/Desktop/yolov5'
-    YOLO_MODELS_DIR_PATH = YOLO_DIR_PATH + '/models'
-    CFG_MODELS_PATHS = {
-        'YOLOv5n': f'{YOLO_MODELS_DIR_PATH}/yolov5n.yaml',
-        'YOLOv5n6': f'{YOLO_MODELS_DIR_PATH}/yolov5n6.yaml',
-        'YOLOv5s': f'{YOLO_MODELS_DIR_PATH}/yolov5s.yaml',
-        'YOLOv5s6': f'{YOLO_MODELS_DIR_PATH}/yolov5s6.yaml',
-        'YOLOv5m': f'{YOLO_MODELS_DIR_PATH}/yolov5m.yaml',
-        'YOLOv5m6': f'{YOLO_MODELS_DIR_PATH}/yolov5m6.yaml',
-    }
-    PRETRAIN_WEIGHTS_PATHS = {
-        'YOLOv5n': f'{YOLO_DIR_PATH}/yolov5n.pt',
-        'YOLOv5n6': f'{YOLO_DIR_PATH}/yolov5n6.pt',
-        'YOLOv5s': f'{YOLO_DIR_PATH}/yolov5s.pt',
-        'YOLOv5s6': f'{YOLO_DIR_PATH}/yolov5s6.pt',
-        'YOLOv5m': f'{YOLO_DIR_PATH}/yolov5m.pt',
-        'YOLOv5m6': f'{YOLO_DIR_PATH}/yolov5m6.pt',
-    }
-    MODEL_RES_ATTACHMENT = {
-        'YOLOv5n': 680,
-        'YOLOv5n6': 1280,
-        'YOLOv5s': 680,
-        'YOLOv5s6': 1280,
-        'YOLOv5m': 680,
-        'YOLOv5m6': 1280,
-    }
+from Configs import YoloConfigs
 
 
 class TrainConfigs:

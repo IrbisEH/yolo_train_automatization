@@ -1,5 +1,5 @@
 from TrainConfigManager import TrainConfigs
-from DatasetConfigManager import Dataset
+from DatasetManager import Dataset
 
 
 class App:

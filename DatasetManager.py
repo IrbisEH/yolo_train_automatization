@@ -1,15 +1,5 @@
 import os
-
-
-class MainDtConfigs:
-    NEW_DT_DIR_PATH = '/home/irbis-eh/Desktop/NewDatasets'
-    MAIN_DT_DIR_NAME = 'MAIN'
-    MAIN_DT_DIR = f'/home/irbis-eh/Desktop/{MAIN_DT_DIR_NAME}'
-    YAML_FILE_NAME = 'data.yaml'
-    LABELS_DIR_NAME = 'labels'
-    IMG_DIR_NAME = 'images'
-    TRAIN_DIR_NAME = 'train'
-    VALID_DIR_NAME = 'valid'
+from Configs import MainDtConfigs
 
 
 class Dataset:
