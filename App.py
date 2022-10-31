@@ -9,5 +9,6 @@ class App:
 
     def run(self):
         self.train_configs.check_trains_config()
-        # train_configs_list = self.train_configs.get_list_trains_config()
-        # print(train_configs_list)
+        train_configs_list = self.train_configs.get_list_trains_config()
+
+        print(self.datasets.img_percent)
