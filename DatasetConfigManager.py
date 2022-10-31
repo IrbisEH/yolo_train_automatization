@@ -1,0 +1,54 @@
+import os
+
+
+class MainDtConfigs:
+    NEW_DT_DIR_PATH = '/home/irbis-eh/Desktop/NewDatasets'
+    MAIN_DT_DIR_NAME = 'MAIN'
+    MAIN_DT_DIR = f'/home/irbis-eh/Desktop/{MAIN_DT_DIR_NAME}'
+    YAML_FILE_NAME = 'data.yaml'
+    LABELS_DIR_NAME = 'labels'
+    IMG_DIR_NAME = 'images'
+    TRAIN_DIR_NAME = 'train'
+    VALID_DIR_NAME = 'valid'
+
+
+class Dataset:
+    def __init__(
+            self, name, train_percent, valid_percent,
+            train_empty_percent, valid_empty_percent
+    ):
+        self.name = name
+        self.train_percent = train_percent
+        self.valid_percent = valid_percent
+        self.train_empty_percent = train_empty_percent
+        self.valid_percent = valid_empty_percent
+
+        self.dir_path = ''
+        self.img_dir_path = ''
+        self.labels_dir_path = ''
+        self.yaml_path = ''
+        self.img_train_path = ''
+        self.img_valid_path = ''
+        self.labels_train_path = ''
+        self.labels_valid_path = ''
+
+        self.main_dt_conf = MainDtConfigs()
+
+        self.get_new_dir_paths()
+
+    def get_new_dir_paths(self):
+        self.dir_path = f'{self.main_dt_conf.NEW_DT_DIR_PATH}/{self.name}'
+        self.img_dir_path = f'{self.dir_path}/{self.main_dt_conf.IMG_DIR_NAME}'
+        self.labels_dir_path = f'{self.dir_path}/{self.main_dt_conf.LABELS_DIR_NAME}'
+        self.yaml_path = f'{self.dir_path}/{self.main_dt_conf.YAML_FILE_NAME}'
+        self.img_train_path = f'{self.img_dir_path}/{self.main_dt_conf.TRAIN_DIR_NAME}'
+        self.img_valid_path = f'{self.img_dir_path}/{self.main_dt_conf.VALID_DIR_NAME}'
+        self.labels_train_path = f'{self.labels_dir_path}/{self.main_dt_conf.TRAIN_DIR_NAME}'
+        self.labels_valid_path = f'{self.labels_dir_path}/{self.main_dt_conf.VALID_DIR_NAME}'
+
+    def create_new_dirs(self):
+        os.makedirs(self.img_train_path)
+        os.makedirs(self.img_valid_path)
+        os.makedirs(self.labels_train_path)
+        os.makedirs(self.labels_valid_path)
+
