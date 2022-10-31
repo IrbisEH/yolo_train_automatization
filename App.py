@@ -28,5 +28,11 @@ class App:
             dataset_config.insert(0, self.train_classes)
             dataset_config.insert(0, name)
             self.dataset_config_list.append(dataset_config)
+            count += 1
+
+    def run(self):
+
+        for dataset_obj in self.dataset_obj_list:
+            dataset_obj.create_new_dirs()
 
 

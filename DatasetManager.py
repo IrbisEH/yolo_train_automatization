@@ -7,7 +7,6 @@ class MainDataset:
         self.config = MainDtConfigs()
 
 
-
 class Dataset:
     def __init__(
             self, name, train_classes, train_percent, valid_percent,

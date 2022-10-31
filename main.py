@@ -34,3 +34,4 @@ run_configs = [
     empty_weights_mode, yolo_models, yolo_epochs
 ]
 App = App(*run_configs)
+App.run()
