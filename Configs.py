@@ -1,12 +1,7 @@
+
 class MainDtConfigs:
-    NEW_DT_DIR_PATH = '/home/irbis-eh/Desktop/NewDatasets'
-    MAIN_DT_DIR_NAME = 'MAIN'
-    MAIN_DT_DIR = f'/home/irbis-eh/Desktop/{MAIN_DT_DIR_NAME}'
-    YAML_FILE_NAME = 'data.yaml'
-    LABELS_DIR_NAME = 'labels'
-    IMG_DIR_NAME = 'images'
-    TRAIN_DIR_NAME = 'train'
-    VALID_DIR_NAME = 'valid'
+    MAIN_DT_DIR_NAME = 'MAIN_DT'
+    MAIN_DT_DIR_PATH = f'/home/irbis-eh/Desktop/{MAIN_DT_DIR_NAME}'
     CLASSES_NAMES = {
         '0': 'drone_view_BMP',
         '1': 'drone_view_tank',
@@ -65,6 +60,15 @@ class MainDtConfigs:
         '54': 'turel_view_military_human',
         '55': 'turel_view_civil_human',
     }
+
+
+class NewDtConfigs:
+    NEW_DT_DIR_PATH = '/home/irbis-eh/Desktop/NewDatasets'
+    YAML_FILE_NAME = 'data.yaml'
+    LABELS_DIR_NAME = 'labels'
+    IMG_DIR_NAME = 'images'
+    TRAIN_DIR_NAME = 'train'
+    VALID_DIR_NAME = 'valid'
 
 
 class YoloConfigs:

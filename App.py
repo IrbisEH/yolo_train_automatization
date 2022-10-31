@@ -1,30 +1,32 @@
+import copy
+
 from TrainConfigManager import TrainConfigs
 from DatasetManager import Dataset
 
 
 class App:
-    def __init__(self, new_dt_name, cur_dt_conf, empty_weights_mode, yolo_models, yolo_epochs):
-        self.train_configs = TrainConfigs(empty_weights_mode, yolo_models, yolo_epochs)
-        self.cur_dt_conf = cur_dt_conf
+    def __init__(
+            self, new_dt_name, train_classes, train_val_empty_percent,
+            empty_weights_mode, yolo_models, yolo_epochs
+    ):
         self.new_dt_name = new_dt_name
-        self.insert_name_in_dt_conf()
-        self.datasets_list = []
+        self.train_classes = train_classes
+        self.train_val_empty_percent = train_val_empty_percent
+        self.empty_weights_mode = empty_weights_mode
+        self.yolo_models = yolo_models
+        self.yolo_epochs = yolo_epochs
 
-    def insert_name_in_dt_conf(self):
+        self.dataset_config_list = []
+        self.get_dataset_configs()
+        self.dataset_obj_list = [Dataset(*i) for i in self.dataset_config_list]
+
+    def get_dataset_configs(self):
         count = 0
-        for dt_conf in self.cur_dt_conf:
+        for item in self.train_val_empty_percent:
             name = f'{self.new_dt_name}_{count}'
-            dt_conf.insert(0, name)
-            count += 1
+            dataset_config = copy.deepcopy(item)
+            dataset_config.insert(0, self.train_classes)
+            dataset_config.insert(0, name)
+            self.dataset_config_list.append(dataset_config)
 
-    def get_dataset_list(self):
-        self.datasets_list = [Dataset(*i) for i in self.cur_dt_conf]
-
-
-    def run(self):
-
-        self.get_dataset_list()
-
-        # for dataset in self.datasets_list:
-        #     dataset.create_new_dirs()
 
