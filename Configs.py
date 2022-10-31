@@ -2,6 +2,10 @@
 class MainDtConfigs:
     MAIN_DT_DIR_NAME = 'MAIN_DT'
     MAIN_DT_DIR_PATH = f'/home/irbis-eh/Desktop/{MAIN_DT_DIR_NAME}'
+    IMG_DIR_NAME = 'images'
+    LABELS_DIR_NAME = 'labels'
+    IMG_DIR_PATRH = f'{MAIN_DT_DIR_PATH}/{IMG_DIR_NAME}'
+
     CLASSES_NAMES = {
         '0': 'drone_view_BMP',
         '1': 'drone_view_tank',

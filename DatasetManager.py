@@ -1,10 +1,14 @@
 import os
+import glob
 from Configs import MainDtConfigs, NewDtConfigs
 
 
 class MainDataset:
     def __init__(self):
         self.config = MainDtConfigs()
+
+    def get_file_paths(self, classes: list):
+        labels_filenames = glob.glob(self.config.)
 
 
 class Dataset:
