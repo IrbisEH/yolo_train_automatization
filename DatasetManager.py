@@ -21,6 +21,36 @@ class MainDataset(Dataset):
         self.dir_path = self.main_config.MAIN_DT_DIR_PATH
         self.img_dir_path = self.main_config.IMG_DIR_PATH
         self.labels_dir_path = self.main_config.LABELS_DIR_PATH
+        self.file_paths = {
+            'image': [],
+            'labels:': []
+        }
+        self.get_file_paths()
+
+    def get_file_paths(self):
+        self.file_paths['image'] = glob.glob(self.img_dir_path + '/*.jpg')
+        self.file_paths['labels'] = glob.glob(self.labels_dir_path + '/*.txt')
+
+    def check_main_dataset(self):
+        img_filenames = [path.split('/')[-1][:-4] for path in self.file_paths['image']]
+        labels_filenames = [path.split('/')[-1][:-4] for path in self.file_paths['labels']]
+        img_without_annotation = []
+        label_without_images = []
+        for filename in img_filenames:
+            if filename not in labels_filenames:
+                img_without_annotation.append(filename + '.jpg')
+        for filename in labels_filenames:
+            if filename not in img_filenames:
+                label_without_images.append(filename + '.txt')
+        if (len(img_without_annotation) != 0) or (len(label_without_images) != 0):
+            print('Имена в изображениях и аннотациях не сходятся')
+            print(f'Имена в изображениях и аннотациях не сходятся\n'
+                  f'Кол-во изображений - {len(img_filenames)}\n'
+                  f'Кол-во аннотаций - {len(labels_filenames)}\n'
+                  f'Изображения без аннотаций - {img_without_annotation}\n'
+                  f'Аннотации без изображений - {label_without_images}')
+        else:
+            print(f'Все изображения имеют файл аннотации, кол-во изображений - {len(img_filenames)}')
 
 
 class NewDataset(Dataset):
@@ -40,7 +70,6 @@ class NewDataset(Dataset):
         self.labels_valid_path = ''
 
         self.new_dt_conf = NewDtConfigs()
-        self.main_data = MainDataset()
 
         self.get_new_dt_classes()
         self.get_new_dir_paths()
@@ -48,7 +77,7 @@ class NewDataset(Dataset):
     def get_new_dt_classes(self):
         self.classes_names = {}
         for key, value in self.train_classes_conf.items():
-            self.classes_names[key] = value
+            self.classes_names[key] = [i for i in value.keys()][0]
 
     def get_new_dir_paths(self):
         self.dir_path = f'{self.new_dt_conf.NEW_DT_DIR_PATH}/{self.name}'

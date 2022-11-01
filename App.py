@@ -1,5 +1,5 @@
 import copy
-from DatasetManager import NewDataset
+from DatasetManager import MainDataset, NewDataset
 
 
 class App:
@@ -30,7 +30,11 @@ class App:
 
     def run(self):
 
-        for dataset_obj in self.dataset_obj_list:
-            dataset_obj.create_new_dirs()
+        main_data = MainDataset()
+
+        main_data.check_main_dataset()
+
+        # for dataset_obj in self.dataset_obj_list:
+        #     dataset_obj.create_new_dirs()\
 
 
