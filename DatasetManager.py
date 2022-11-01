@@ -3,29 +3,36 @@ import glob
 from Configs import MainDtConfigs, NewDtConfigs
 
 
-class MainDataset:
-    def __init__(self):
-        self.config = MainDtConfigs()
-
-    def get_file_paths(self, classes: list):
-        labels_filenames = glob.glob(self.config.)
-
-
 class Dataset:
-    def __init__(
-            self, name, train_classes, train_percent, valid_percent,
-            train_empty_percent, valid_empty_percent
-    ):
+    def __init__(self):
+        self.main_config = MainDtConfigs
+        self.dir_path = ''
+        self.img_dir_path = ''
+        self.labels_dir_path = ''
+        self.classes_names = self.main_config.CLASSES_NAMES
+
+    def get_count_classes(self):
+        pass
+
+
+class MainDataset(Dataset):
+    def __init__(self):
+        super().__init__()
+        self.dir_path = self.main_config.MAIN_DT_DIR_PATH
+        self.img_dir_path = self.main_config.IMG_DIR_PATH
+        self.labels_dir_path = self.main_config.LABELS_DIR_PATH
+
+
+class NewDataset(Dataset):
+    def __init__(self, name, train_classes_conf, train_percent, valid_percent, train_empty_percent, valid_empty_percent):
+        super().__init__()
         self.name = name
-        self.train_classes = train_classes
+        self.train_classes_conf = train_classes_conf
         self.train_percent = train_percent
         self.valid_percent = valid_percent
         self.train_empty_percent = train_empty_percent
         self.valid_percent = valid_empty_percent
 
-        self.dir_path = ''
-        self.img_dir_path = ''
-        self.labels_dir_path = ''
         self.yaml_path = ''
         self.img_train_path = ''
         self.img_valid_path = ''
@@ -35,7 +42,13 @@ class Dataset:
         self.new_dt_conf = NewDtConfigs()
         self.main_data = MainDataset()
 
+        self.get_new_dt_classes()
         self.get_new_dir_paths()
+
+    def get_new_dt_classes(self):
+        self.classes_names = {}
+        for key, value in self.train_classes_conf.items():
+            self.classes_names[key] = value
 
     def get_new_dir_paths(self):
         self.dir_path = f'{self.new_dt_conf.NEW_DT_DIR_PATH}/{self.name}'

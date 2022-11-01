@@ -1,5 +1,5 @@
 import copy
-from DatasetManager import Dataset
+from DatasetManager import NewDataset
 
 
 class App:
@@ -16,7 +16,7 @@ class App:
 
         self.dataset_config_list = []
         self.get_dataset_configs()
-        self.dataset_obj_list = [Dataset(*i) for i in self.dataset_config_list]
+        self.dataset_obj_list = [NewDataset(*i) for i in self.dataset_config_list]
 
     def get_dataset_configs(self):
         count = 0

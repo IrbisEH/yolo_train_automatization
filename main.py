@@ -33,5 +33,6 @@ run_configs = [
     new_dt_name, train_classes, train_val_empty_percent,
     empty_weights_mode, yolo_models, yolo_epochs
 ]
+
 App = App(*run_configs)
 App.run()
