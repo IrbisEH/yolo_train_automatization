@@ -1,6 +1,6 @@
 import os
 import glob
-from Configs import MainDtConfigs, NewDtConfigs
+from ConfigManager import MainDtConfigs, NewDtConfigs
 
 
 class Dataset:

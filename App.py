@@ -1,4 +1,5 @@
 import copy
+from ConfigManager import ConfigManager
 from DatasetManager import MainDataset, NewDataset
 
 
@@ -29,12 +30,6 @@ class App:
             count += 1
 
     def run(self):
-
-        main_data = MainDataset()
-
-        main_data.check_main_dataset()
-
-        # for dataset_obj in self.dataset_obj_list:
-        #     dataset_obj.create_new_dirs()\
+        pass
 
 

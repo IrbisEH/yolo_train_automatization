@@ -1,7 +1,10 @@
+import os
+
+from dotenv import load_dotenv
+
 
 class MainDtConfigs:
-    MAIN_DT_DIR_NAME = 'MAIN_DT'
-    MAIN_DT_DIR_PATH = f'/home/irbis-eh/Desktop/{MAIN_DT_DIR_NAME}'
+    MAIN_DT_DIR_PATH = None
     IMG_DIR_NAME = 'images'
     LABELS_DIR_NAME = 'labels'
     EMPTY_DIR_NAME = 'empty'
@@ -105,3 +108,14 @@ class YoloConfigs:
         'YOLOv5m': 680,
         'YOLOv5m6': 1280,
     }
+
+
+class ConfigManager:
+
+    load_dotenv()
+
+    main_dt_configs = MainDtConfigs()
+    main_dt.MAIN_DT_DIR_PATH = os.getenv('MAIN_DT_DIR_PATH')
+
+    new_dt_configs = NewDtConfigs()
+    new_dt_configs.NEW_DT_DIR_PATH = os.getenv('')
